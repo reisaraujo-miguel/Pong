@@ -1,0 +1,11 @@
+res://default_env.tres
+res://src/Tela.tscn
+res://src/Ball/Ball.gd
+res://src/Player/Player.tscn
+res://src/Player/Player.gd
+res://src/Ball/Ball.tscn
+res://src/Oponent/Oponent.tscn
+res://src/Oponent/Oponent.gd
+res://src/Rackets/up_racket.tscn
+res://src/Game.gd
+res://src/Score/Score.tscn
