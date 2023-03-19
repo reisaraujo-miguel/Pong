@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=3 uid="uid://lqw4fp24p1g1"]
+
+[ext_resource type="PackedScene" uid="uid://nnymtlb30j16" path="res://src/Player/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cckkobajuigow" path="res://src/Oponent/Oponent.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dx2usplti4ufj" path="res://src/Ball/Ball.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://c4uarrk66l8h2" path="res://src/Score/Score.tscn" id="5"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a81x3"]
+a = Vector2(0, -43)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_q546r"]
+a = Vector2(0, -43)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="1"]
+b = Vector2(1280, 0)
+
+[sub_resource type="SegmentShape2D" id="2"]
+a = Vector2(0, 720)
+b = Vector2(1280, 720)
+
+[sub_resource type="GDScript" id="3"]
+script/source = "extends Area2D
+
+func _on_Score_Area_body_shape_entered(_body_id, _body, _body_shape, area_shape):
+	if area_shape == 0: #Player_Area
+		Game.oponent_score += 1
+	elif area_shape == 1: #Oponent_Area
+		Game.player_score += 1
+		Game.oponent_move = false
+"
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(40, 716)
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(40, 716)
+
+[node name="Tela" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 0, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(120, 179)
+metadata/racket = true
+
+[node name="Marker2D" type="Marker2D" parent="Player"]
+position = Vector2(48, 0)
+
+[node name="Up" type="Area2D" parent="Player"]
+position = Vector2(3, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Up"]
+position = Vector2(13, -21)
+shape = SubResource("SegmentShape2D_a81x3")
+
+[node name="Down" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Down"]
+position = Vector2(16, 65)
+shape = SubResource("SegmentShape2D_a81x3")
+
+[node name="Oponent" parent="." instance=ExtResource("3")]
+position = Vector2(1160, 548)
+metadata/racket = true
+metadata/_edit_lock_ = true
+
+[node name="Marker2D" type="Marker2D" parent="Oponent"]
+position = Vector2(-47, 0)
+
+[node name="Up" type="Area2D" parent="Oponent"]
+position = Vector2(-1037, -369)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Oponent/Up"]
+position = Vector2(1021, 348)
+shape = SubResource("SegmentShape2D_q546r")
+
+[node name="Down" type="Area2D" parent="Oponent"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Oponent/Down"]
+position = Vector2(16, 65)
+shape = SubResource("SegmentShape2D_a81x3")
+
+[node name="Ball" parent="." instance=ExtResource("4")]
+position = Vector2(640, 360)
+
+[node name="limit" type="StaticBody2D" parent="."]
+
+[node name="limit_up" type="CollisionShape2D" parent="limit"]
+shape = SubResource("1")
+
+[node name="limit_down" type="CollisionShape2D" parent="limit"]
+shape = SubResource("2")
+
+[node name="Score_Area" type="Area2D" parent="."]
+script = SubResource("3")
+
+[node name="Player_Area" type="CollisionShape2D" parent="Score_Area"]
+position = Vector2(20, 360)
+shape = SubResource("4")
+
+[node name="Oponent_Area" type="CollisionShape2D" parent="Score_Area"]
+position = Vector2(1260, 360)
+shape = SubResource("5")
+
+[node name="Score" parent="." instance=ExtResource("5")]
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="body_entered" from="Player/Up" to="Ball" method="_on_up_body_entered"]
+[connection signal="body_entered" from="Player/Down" to="Ball" method="_on_down_body_entered"]
+[connection signal="body_entered" from="Oponent/Up" to="Ball" method="_on_up_body_entered"]
+[connection signal="body_entered" from="Oponent/Down" to="Ball" method="_on_down_body_entered"]
+[connection signal="body_shape_entered" from="Score_Area" to="Score_Area" method="_on_Score_Area_body_shape_entered"]

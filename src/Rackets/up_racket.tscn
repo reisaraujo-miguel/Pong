@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtuimd38333qd"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k0e5o"]
+a = Vector2(0, 25)
+b = Vector2(0, 65)
+
+[node name="UpRacket" type="StaticBody2D"]
+metadata/counter_dir = "up"
+
+[node name="UpCounter" type="CollisionShape2D" parent="."]
+position = Vector2(15, -89)
+scale = Vector2(1.5, 1)
+shape = SubResource("SegmentShape2D_k0e5o")
+metadata/counter_dir = "up"
