@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://q1ds4406427g"]
+
+[sub_resource type="SegmentShape2D" id="1"]
+a = Vector2(0, 25)
+b = Vector2(0, 65)
+
+[node name="DownRacket" type="StaticBody2D"]
+metadata/counter_dir = "down"
+
+[node name="DownCounter" type="CollisionShape2D" parent="."]
+position = Vector2(15, 0)
+scale = Vector2(1.5, 1)
+shape = SubResource("1")
+metadata/counter_dir = "down"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cckkobajuigow"]
+
+[ext_resource type="Texture2D" uid="uid://ylc7sq3qkuq5" path="res://assets/sprites/white_dot.png" id="1"]
+[ext_resource type="Script" path="res://src/Oponent/Oponent.gd" id="2"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fgu63"]
+a = Vector2(0, -43)
+b = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iq6o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dujq5"]
+
+[node name="Oponent" type="CharacterBody2D"]
+script = ExtResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.25889, 16.0687)
+texture = ExtResource("1")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 22)
+shape = SubResource("SegmentShape2D_fgu63")
+
+[node name="up" type="CollisionShape2D" parent="."]
+position = Vector2(0, -54)
+shape = SubResource("RectangleShape2D_5iq6o")
+
+[node name="down" type="CollisionShape2D" parent="."]
+position = Vector2(0, 54)
+shape = SubResource("RectangleShape2D_dujq5")
