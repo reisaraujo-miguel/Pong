@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://nnymtlb30j16" path="res://src/Player/Player.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://cckkobajuigow" path="res://src/Oponent/Oponent.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dx2usplti4ufj" path="res://src/Ball/Ball.tscn" id="4"]
+[ext_resource type="Script" path="res://src/Score/ScoreArea.gd" id="4_6qfnx"]
 [ext_resource type="PackedScene" uid="uid://c4uarrk66l8h2" path="res://src/Score/Score.tscn" id="5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_a81x3"]
@@ -20,17 +21,6 @@ b = Vector2(1280, 0)
 a = Vector2(0, 720)
 b = Vector2(1280, 720)
 
-[sub_resource type="GDScript" id="3"]
-script/source = "extends Area2D
-
-func _on_Score_Area_body_shape_entered(_body_id, _body, _body_shape, area_shape):
-	if area_shape == 0: #Player_Area
-		Game.oponent_score += 1
-	elif area_shape == 1: #Oponent_Area
-		Game.player_score += 1
-		Game.oponent_move = false
-"
-
 [sub_resource type="RectangleShape2D" id="4"]
 size = Vector2(40, 716)
 
@@ -38,12 +28,6 @@ size = Vector2(40, 716)
 size = Vector2(40, 716)
 
 [node name="Tela" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(1, 0, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("1")]
 position = Vector2(120, 179)
@@ -98,23 +82,23 @@ shape = SubResource("1")
 [node name="limit_down" type="CollisionShape2D" parent="limit"]
 shape = SubResource("2")
 
-[node name="Score_Area" type="Area2D" parent="."]
-script = SubResource("3")
+[node name="ScoreArea" type="Area2D" parent="."]
+script = ExtResource("4_6qfnx")
 
-[node name="Player_Area" type="CollisionShape2D" parent="Score_Area"]
+[node name="PlayerArea" type="CollisionShape2D" parent="ScoreArea"]
 position = Vector2(20, 360)
 shape = SubResource("4")
 
-[node name="Oponent_Area" type="CollisionShape2D" parent="Score_Area"]
+[node name="OponentArea" type="CollisionShape2D" parent="ScoreArea"]
 position = Vector2(1260, 360)
 shape = SubResource("5")
 
 [node name="Score" parent="." instance=ExtResource("5")]
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="body_entered" from="Player/Up" to="Ball" method="_on_up_body_entered"]
 [connection signal="body_entered" from="Player/Down" to="Ball" method="_on_down_body_entered"]
 [connection signal="body_entered" from="Oponent/Up" to="Ball" method="_on_up_body_entered"]
 [connection signal="body_entered" from="Oponent/Down" to="Ball" method="_on_down_body_entered"]
-[connection signal="body_shape_entered" from="Score_Area" to="Score_Area" method="_on_Score_Area_body_shape_entered"]
+[connection signal="body_shape_entered" from="ScoreArea" to="ScoreArea" method="_on_Score_Area_body_shape_entered"]
+[connection signal="oponent_scored" from="ScoreArea" to="Score" method="_on_score_area_oponent_scored"]
+[connection signal="player_scored" from="ScoreArea" to="Score" method="_on_score_area_player_scored"]

@@ -1,26 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4uarrk66l8h2"]
 
-[sub_resource type="GDScript" id="4"]
-script/source = "extends Control
-
-var player_score
-var oponent_score
-
-
-func _process(_delta):
-	player_score = Game.player_score
-	oponent_score = Game.oponent_score
-	
-	$ReferenceRect/Player_Score.text = str(player_score)
-	$ReferenceRect/Oponent_Score.text = str(oponent_score)
-"
+[ext_resource type="Script" path="res://src/Score/Score.gd" id="1_kx626"]
 
 [node name="Score" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = SubResource("4")
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kx626")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 layout_mode = 0
