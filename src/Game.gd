@@ -11,6 +11,10 @@ var default_speed: int = 400
 var ball_speed: int = 700
 
 
+func _ready() -> void:
+	randomize()
+
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("fullscreen"):
 		if get_window().mode == Window.MODE_WINDOWED:
