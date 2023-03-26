@@ -7,6 +7,7 @@ var collision: KinematicCollision2D
 
 @onready var speed: int = Game.ball_speed
 
+
 func _ready() -> void:
 	if Game.ball_initial_pos == "player":
 		global_position = Game.player_pos
@@ -15,10 +16,9 @@ func _ready() -> void:
 		global_position = Game.oponent_pos
 		direction.x = -1
 
-	randomize()
 	angle_index = randi() % 6
-	#direction = direction.rotated(deg_to_rad(angle_list[angle_index]))
-	direction = direction.rotated(deg_to_rad(30))
+	direction = direction.rotated(deg_to_rad(angle_list[angle_index]))
+	#direction = direction.rotated(deg_to_rad(30))
 
 
 func _physics_process(delta: float) -> void:
@@ -43,7 +43,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 	var _new_scene: Error = get_tree().reload_current_scene()
 
 
-func _on_up_body_entered(body: Object) -> void:
+func _on_up_body_entered(body: Node2D) -> void:
 	if body == self:
 		angle_index = randi() % 2
 
@@ -54,7 +54,7 @@ func _on_up_body_entered(body: Object) -> void:
 			direction = Vector2(1, 0).rotated(deg_to_rad(angle_list[angle_index + 3]))
 
 
-func _on_down_body_entered(body: Object) -> void:
+func _on_down_body_entered(body: Node2D) -> void:
 	if body == self:
 		angle_index = randi() % 2
 
