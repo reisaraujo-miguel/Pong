@@ -18,7 +18,7 @@ offset_top = 1.25
 offset_right = 730.0
 offset_bottom = 101.25
 
-[node name="Player_Score" type="Label" parent="ReferenceRect"]
+[node name="Player1Score" type="Label" parent="ReferenceRect"]
 layout_mode = 0
 offset_left = 46.0
 offset_top = 25.0
@@ -30,7 +30,7 @@ theme_override_font_sizes/font_size = 40
 text = "0"
 uppercase = true
 
-[node name="Oponent_Score" type="Label" parent="ReferenceRect"]
+[node name="Player2Score" type="Label" parent="ReferenceRect"]
 layout_mode = 0
 offset_left = 114.0
 offset_top = 25.0
