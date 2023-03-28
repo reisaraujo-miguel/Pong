@@ -9,11 +9,11 @@ var collision: KinematicCollision2D
 
 
 func _ready() -> void:
-	if Game.ball_initial_pos == "player":
-		global_position = Game.player_pos
+	if Game.serving_player == Game.PLAYER_1:
+		global_position = Game.player_1_pos
 		direction.x = 1
 	else:
-		global_position = Game.oponent_pos
+		global_position = Game.player_2_pos
 		direction.x = -1
 
 	angle_index = randi() % 6
@@ -32,15 +32,6 @@ func _physics_process(delta: float) -> void:
 
 	if collision:
 		direction = direction.bounce(collision.get_normal())
-
-
-func _on_VisibilityNotifier2D_screen_exited() -> void:
-	if Game.oponent_move:
-		Game.ball_initial_pos = "player"
-	else:
-		Game.ball_initial_pos = "oponent"
-
-	var _new_scene: Error = get_tree().reload_current_scene()
 
 
 func _on_up_body_entered(body: Node2D) -> void:

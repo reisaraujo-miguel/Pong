@@ -3,12 +3,12 @@ extends CharacterBody2D
 var direction: Vector2
 var collision: KinematicCollision2D
 
-@onready var speed: int = Game.default_speed
+@onready var speed: int = Game.player_speed
 
 
 func _ready() -> void:
 	global_position.y = DisplayServer.screen_get_size().y / 2.0
-	Game.oponent_pos = $Marker2D.global_position
+	Game.player_2_pos = $Marker2D.global_position
 
 
 func _physics_process(delta: float) -> void:

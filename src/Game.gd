@@ -1,14 +1,17 @@
 extends Node
 
-var oponent_move: bool = false
-var ball_initial_pos: String = "player"
+const player_speed: int = 400
+const ball_speed: int = 700
+const PLAYER_1: int = 0
+const PLAYER_2: int = 1
+
+var oponent_move: bool = false  # if true, the oponent can move. Used for AI Oponents
+var serving_player: int = PLAYER_1
 var ball_pos: float = 0
-var player_pos: Vector2 = Vector2.ZERO
-var oponent_pos: Vector2 = Vector2.ZERO
-var player_score: int = 0
-var oponent_score: int = 0
-var default_speed: int = 400
-var ball_speed: int = 700
+var player_1_pos: Vector2 = Vector2.ZERO
+var player_2_pos: Vector2 = Vector2.ZERO
+var player_1_score: int = 0
+var player_2_score: int = 0
 
 
 func _ready() -> void:
