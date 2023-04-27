@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pong!"
-run/main_scene="res://src/Match/Match.tscn"
+run/main_scene="res://src/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
