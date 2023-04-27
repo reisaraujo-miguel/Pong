@@ -5,16 +5,26 @@ var collision: KinematicCollision2D
 var player_up: StringName = "single_player_up"
 var player_down: StringName = "single_player_down"
 
+@export var is_player1: bool = true
+
 @onready var speed: int = Game.player_speed
 
 
 func _ready() -> void:
 	global_position.y = DisplayServer.screen_get_size().y / 2.0
-	Game.player_1_pos = $Marker2D.global_position
+
+	if is_player1:
+		Game.player_1_pos = $Marker2D.global_position
+	else:
+		Game.player_2_pos = $Marker2D.global_position
 
 	if Game.multi_player:
-		player_up = "player1_up"
-		player_down = "player1_down"
+		if is_player1:
+			player_up = "player1_up"
+			player_down = "player1_down"
+		else:
+			player_up = "player2_up"
+			player_down = "player2_down"
 
 
 func _input(_event: InputEvent) -> void:
