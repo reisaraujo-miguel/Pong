@@ -12,6 +12,7 @@ var player_1_pos: Vector2 = Vector2.ZERO
 var player_2_pos: Vector2 = Vector2.ZERO
 var player_1_score: int = 0
 var player_2_score: int = 0
+var multi_player: bool = false
 
 
 func _ready() -> void:
