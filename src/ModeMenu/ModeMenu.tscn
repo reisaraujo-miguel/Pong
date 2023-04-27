@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://hl5kdhgp3j7k"]
+
+[ext_resource type="FontFile" uid="uid://bcj3iqgruq37t" path="res://assets/fonts/RobotoMono-Bold.ttf" id="1_ois4b"]
+[ext_resource type="Script" path="res://src/ModeMenu/ModeMenu.gd" id="1_y316i"]
+
+[node name="ModeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y316i")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_ois4b")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[center][wave amp=80]MODE[/wave][/center]"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="SinglePlayer" type="Button" parent="CenterContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
+theme_override_fonts/font = ExtResource("1_ois4b")
+theme_override_font_sizes/font_size = 80
+text = "1 Player"
+flat = true
+
+[node name="MultiPlayer" type="Button" parent="CenterContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
+theme_override_fonts/font = ExtResource("1_ois4b")
+theme_override_font_sizes/font_size = 80
+text = "2 Players"
+flat = true
+
+[connection signal="button_up" from="CenterContainer/VBoxContainer2/MarginContainer/VBoxContainer/SinglePlayer" to="." method="_on_single_player_button_up"]
+[connection signal="button_up" from="CenterContainer/VBoxContainer2/MarginContainer/VBoxContainer/MultiPlayer" to="." method="_on_multi_player_button_up"]
