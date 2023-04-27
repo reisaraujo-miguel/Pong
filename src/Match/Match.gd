@@ -2,7 +2,10 @@ extends Node2D
 
 
 func new_service():
-	var _new_scene: Error = get_tree().reload_current_scene()
+	if Game.multi_player:
+		Game.goto_scene("res://src/Match/MatchPvP.tscn")
+	else:
+		Game.goto_scene("res://src/Match/MatchPvE.tscn")
 
 
 func _on_score_area_player_1_scored() -> void:
