@@ -8,8 +8,8 @@ const PLAYER_2: int = 1
 var oponent_move: bool = false  # if true, the oponent can move. Used for AI Oponents
 var serving_player: int = PLAYER_1
 var ball_pos: float = 0
-var player_1_pos: Vector2 = Vector2.ZERO
-var player_2_pos: Vector2 = Vector2.ZERO
+var player_1_pos: Vector2 = Vector2.ZERO # position in front of the player, used to set the ball start position
+var player_2_pos: Vector2 = Vector2.ZERO # position in front of the player, used to set the ball start position
 var player_1_score: int = 0
 var player_2_score: int = 0
 var multi_player: bool = false
@@ -23,6 +23,12 @@ func _ready() -> void:
 	current_scene = root.get_child(root.get_child_count() - 1)
 
 
+func reset_stats() -> void:
+	serving_player = PLAYER_1
+	player_1_score = 0
+	player_2_score = 0
+
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("fullscreen"):
 		if get_window().mode == Window.MODE_WINDOWED:
@@ -32,8 +38,8 @@ func _input(_event: InputEvent) -> void:
 				get_window().mode = (Window.MODE_FULLSCREEN)
 		else:
 			get_window().mode = (Window.MODE_WINDOWED)
-
-	if Input.is_action_just_pressed("main_menu"):
+	elif Input.is_action_just_pressed("main_menu"):
+		reset_stats()
 		goto_scene("res://src/MainMenu/MainMenu.tscn")
 
 
