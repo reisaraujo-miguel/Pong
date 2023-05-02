@@ -1,6 +1,7 @@
 extends Node2D
 
 var game_scene: NodePath
+var is_paused: bool = false
 
 
 func _ready() -> void:
@@ -29,4 +30,5 @@ func _input(_event: InputEvent) -> void:
 		Game.reset_stats()
 		new_service() # in this case will work as reset
 	elif Input.is_action_just_pressed("pause"):
-		pass
+		is_paused = not is_paused
+		get_tree().paused = is_paused
