@@ -28,7 +28,7 @@ func _on_score_area_player_2_scored() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("restart_match"):
 		Game.reset_stats()
-		new_service() # in this case will work as reset
+		new_service()  # in this case will work as reset
 	elif Input.is_action_just_pressed("pause"):
 		is_paused = not is_paused
 		get_tree().paused = is_paused
