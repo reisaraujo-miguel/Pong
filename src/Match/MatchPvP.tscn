@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cohcwcia3e58c"]
+[gd_scene load_steps=14 format=3 uid="uid://cohcwcia3e58c"]
 
 [ext_resource type="Script" path="res://src/Match/Match.gd" id="1_m6xwh"]
 [ext_resource type="PackedScene" uid="uid://nnymtlb30j16" path="res://src/Player/Player1.tscn" id="2_e7hu4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dx2usplti4ufj" path="res://src/Ball/Ball.tscn" id="4_sbfvm"]
 [ext_resource type="Script" path="res://src/Score/ScoreArea.gd" id="5_u8yry"]
 [ext_resource type="PackedScene" uid="uid://c4uarrk66l8h2" path="res://src/Score/Score.tscn" id="6_5deb1"]
+[ext_resource type="PackedScene" uid="uid://cfxsplq6o46ax" path="res://src/Match/PauseLabel.tscn" id="7_mby4w"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_a81x3"]
 a = Vector2(0, -43)
@@ -102,6 +103,11 @@ shape = SubResource("5")
 
 [node name="Score" parent="." instance=ExtResource("6_5deb1")]
 process_mode = 1
+
+[node name="PauseLabel" parent="." instance=ExtResource("7_mby4w")]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
 
 [connection signal="body_entered" from="Player1/Up" to="Ball" method="_on_up_body_entered"]
 [connection signal="body_entered" from="Player1/Down" to="Ball" method="_on_down_body_entered"]
