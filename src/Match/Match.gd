@@ -31,4 +31,5 @@ func _input(_event: InputEvent) -> void:
 		new_service()  # in this case will work as reset
 	elif Input.is_action_just_pressed("pause"):
 		is_paused = not is_paused
+		%PauseLabel.visible = is_paused
 		get_tree().paused = is_paused
