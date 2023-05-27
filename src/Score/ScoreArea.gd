@@ -13,6 +13,9 @@ func _on_Score_Area_body_shape_entered(
 	_body_shape_index: int,
 	local_shape_index: int
 ) -> void:
+	%Scored.play()
+	await %Scored.finished
+
 	if local_shape_index == PLAYER_1_AREA_IDX:
 		Game.player_2_score += 1
 		emit_signal("player_2_scored")

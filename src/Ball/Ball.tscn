@@ -8,6 +8,7 @@ size = Vector2(19, 19)
 
 [node name="Ball" type="CharacterBody2D"]
 position = Vector2(38.2322, 364.708)
+collision_layer = 3
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
