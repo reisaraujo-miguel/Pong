@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cckkobajuigow"]
+[gd_scene load_steps=8 format=3 uid="uid://cckkobajuigow"]
 
 [ext_resource type="Texture2D" uid="uid://ylc7sq3qkuq5" path="res://assets/sprites/white_dot.png" id="1"]
 [ext_resource type="Script" path="res://src/Oponent/Oponent.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://cn1rngbovq7iu" path="res://assets/sounds/pong.wav" id="3_mqurq"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fgu63"]
 a = Vector2(0, -43)
@@ -10,6 +11,9 @@ b = Vector2(0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iq6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dujq5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi6bf"]
+size = Vector2(7, 128)
 
 [node name="Oponent" type="CharacterBody2D"]
 script = ExtResource("2")
@@ -30,3 +34,16 @@ shape = SubResource("RectangleShape2D_5iq6o")
 [node name="down" type="CollisionShape2D" parent="."]
 position = Vector2(0, 54)
 shape = SubResource("RectangleShape2D_dujq5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_mqurq")
+
+[node name="AudioTrigger" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AudioTrigger"]
+position = Vector2(-14, 0)
+shape = SubResource("RectangleShape2D_mi6bf")
+
+[connection signal="body_shape_entered" from="AudioTrigger" to="." method="_on_audio_trigger_body_shape_entered"]
