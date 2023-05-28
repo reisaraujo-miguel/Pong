@@ -2,7 +2,7 @@ extends Node
 
 var curr_song: int = 0
 var total_songs: int = 0
-var is_legal: bool = false
+var is_legal: bool = true
 
 var list: Array
 
