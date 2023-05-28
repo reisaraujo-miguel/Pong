@@ -48,7 +48,7 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
 theme_override_fonts/font = ExtResource("1_ois4b")
 theme_override_font_sizes/font_size = 60
-text = "1 Player"
+text = "1P MODE"
 flat = true
 
 [node name="MultiPlayer" type="Button" parent="CenterContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
@@ -56,8 +56,17 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
 theme_override_fonts/font = ExtResource("1_ois4b")
 theme_override_font_sizes/font_size = 60
-text = "2 Players"
+text = "2P MODE"
+flat = true
+
+[node name="Back" type="Button" parent="CenterContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
+theme_override_fonts/font = ExtResource("1_ois4b")
+theme_override_font_sizes/font_size = 60
+text = "BACK"
 flat = true
 
 [connection signal="button_up" from="CenterContainer/VBoxContainer2/MarginContainer/VBoxContainer/SinglePlayer" to="." method="_on_single_player_button_up"]
 [connection signal="button_up" from="CenterContainer/VBoxContainer2/MarginContainer/VBoxContainer/MultiPlayer" to="." method="_on_multi_player_button_up"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

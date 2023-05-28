@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cavrx2of6ckxe"]
+[gd_scene load_steps=5 format=3 uid="uid://cavrx2of6ckxe"]
 
 [ext_resource type="Script" path="res://src/MainMenu/MainMenu.gd" id="1_eei7v"]
 [ext_resource type="FontFile" uid="uid://bcj3iqgruq37t" path="res://assets/fonts/RobotoMono-Bold.ttf" id="1_rnhwi"]
+[ext_resource type="PackedScene" uid="uid://ty34ba21d45x" path="res://src/Settings/settings.tscn" id="3_x8rsj"]
+[ext_resource type="PackedScene" uid="uid://hl5kdhgp3j7k" path="res://src/ModeMenu/ModeMenu.tscn" id="4_26nug"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,7 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eei7v")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="StartMenu" type="CenterContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,12 +23,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="Menu" type="VBoxContainer" parent="StartMenu"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="StartMenu/Menu"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_rnhwi")
 theme_override_font_sizes/normal_font_size = 200
@@ -33,31 +37,52 @@ bbcode_enabled = true
 text = "[center][wave amp=80]PONG![/wave][/center]"
 fit_content = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="StartMenu/Menu"]
 layout_mode = 2
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu/Menu/MarginContainer"]
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="StartBtn" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="StartBtn" type="Button" parent="StartMenu/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
 theme_override_fonts/font = ExtResource("1_rnhwi")
 theme_override_font_sizes/font_size = 60
-text = "Start"
+text = "START"
 flat = true
 
-[node name="QuitBtn" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="StartMenu/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
 theme_override_fonts/font = ExtResource("1_rnhwi")
 theme_override_font_sizes/font_size = 60
-text = "Quit"
+text = "SETTINGS"
 flat = true
 
-[connection signal="button_up" from="CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_button_up"]
-[connection signal="button_up" from="CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_button_up"]
+[node name="QuitBtn" type="Button" parent="StartMenu/Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
+theme_override_fonts/font = ExtResource("1_rnhwi")
+theme_override_font_sizes/font_size = 60
+text = "QUIT"
+flat = true
+
+[node name="Settings" parent="StartMenu" instance=ExtResource("3_x8rsj")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ModeMenu" parent="." instance=ExtResource("4_26nug")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="button_up" from="StartMenu/Menu/MarginContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_button_up"]
+[connection signal="pressed" from="StartMenu/Menu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="button_up" from="StartMenu/Menu/MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_button_up"]
+[connection signal="return_pressed" from="StartMenu/Settings" to="." method="_on_settings_return_pressed"]
+[connection signal="back_button_pressed" from="ModeMenu" to="." method="_on_mode_menu_back_button_pressed"]
