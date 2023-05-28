@@ -139,6 +139,10 @@ unique_name_in_owner = true
 process_mode = 3
 visible = false
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -8.0
+
 [connection signal="body_entered" from="Player1/Up" to="Ball" method="_on_up_body_entered"]
 [connection signal="body_entered" from="Player1/Down" to="Ball" method="_on_down_body_entered"]
 [connection signal="body_entered" from="Player2/Up" to="Ball" method="_on_up_body_entered"]
