@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cavrx2of6ckxe"]
+[gd_scene load_steps=6 format=3 uid="uid://cavrx2of6ckxe"]
 
 [ext_resource type="Script" path="res://src/MainMenu/MainMenu.gd" id="1_eei7v"]
 [ext_resource type="FontFile" uid="uid://bcj3iqgruq37t" path="res://assets/fonts/RobotoMono-Bold.ttf" id="1_rnhwi"]
 [ext_resource type="PackedScene" uid="uid://ty34ba21d45x" path="res://src/Settings/settings.tscn" id="3_x8rsj"]
 [ext_resource type="PackedScene" uid="uid://hl5kdhgp3j7k" path="res://src/ModeMenu/ModeMenu.tscn" id="4_26nug"]
+[ext_resource type="AudioStream" uid="uid://cypluy6nan6hh" path="res://assets/sounds/8_Bit_Menu.mp3" id="5_ph4nl"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -81,8 +82,15 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_ph4nl")
+autoplay = true
+
 [connection signal="button_up" from="StartMenu/Menu/MarginContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_button_up"]
 [connection signal="pressed" from="StartMenu/Menu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="button_up" from="StartMenu/Menu/MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_button_up"]
+[connection signal="music_volume_changed" from="StartMenu/Settings" to="." method="_on_settings_music_volume_changed"]
 [connection signal="return_pressed" from="StartMenu/Settings" to="." method="_on_settings_return_pressed"]
 [connection signal="back_button_pressed" from="ModeMenu" to="." method="_on_mode_menu_back_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

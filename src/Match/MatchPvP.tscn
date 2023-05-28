@@ -162,3 +162,4 @@ unique_name_in_owner = true
 [connection signal="sfx_volume_changed" from="PauseMenu" to="." method="_on_pause_menu_sfx_volume_changed"]
 [connection signal="sfx_volume_changed" from="PauseMenu" to="Player1" method="_on_pause_menu_sfx_volume_changed"]
 [connection signal="sfx_volume_changed" from="PauseMenu" to="Player2" method="_on_pause_menu_sfx_volume_changed"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
