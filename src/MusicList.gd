@@ -6,6 +6,7 @@ var is_legal: bool = false
 
 var list: Array
 
+
 func _ready() -> void:
 	var path: String
 

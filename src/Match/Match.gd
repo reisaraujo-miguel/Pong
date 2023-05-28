@@ -11,10 +11,9 @@ func _ready() -> void:
 		game_scene = "res://src/Match/MatchPvE.tscn"
 
 	%Music.stream = MusicList.list[MusicList.curr_song % MusicList.total_songs]
-	MusicList.curr_song += 1;
+	MusicList.curr_song += 1
 
 	%Music.play()
-
 
 
 func new_service():

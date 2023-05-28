@@ -21,5 +21,10 @@ func _physics_process(delta: float) -> void:
 		collision = move_and_collide(direction * speed * delta)
 
 
-func _on_audio_trigger_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+func _on_audio_trigger_body_shape_entered(
+	_body_rid: RID,
+	_body: Node2D,
+	_body_shape_index: int,
+	_local_shape_index: int
+) -> void:
 	%AudioStreamPlayer2D.play()
