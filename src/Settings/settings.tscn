@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=3 uid="uid://ty34ba21d45x"]
+
+[ext_resource type="FontFile" uid="uid://bcj3iqgruq37t" path="res://assets/fonts/RobotoMono-Bold.ttf" id="1_t3u0l"]
+[ext_resource type="Script" path="res://src/Settings/settings.gd" id="1_tcxv4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlmcx"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4hwod"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tcxv4")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(450, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mlmcx")
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center][wave amp=40]SETTINGS[/wave][/center]"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4hwod")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "SFX:      "
+vertical_alignment = 1
+
+[node name="SfxVolume" type="HSlider" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -100.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MUSIC:"
+vertical_alignment = 1
+
+[node name="MusicVolume" type="HSlider" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -100.0
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4hwod")
+
+[node name="CheckBox" type="CheckBox" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_t3u0l")
+theme_override_font_sizes/font_size = 24
+text = "FULLSCREEN"
+
+[node name="HSeparator3" type="HSeparator" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4hwod")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="MainMenu" type="Button" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
+theme_override_fonts/font = ExtResource("1_t3u0l")
+theme_override_font_sizes/font_size = 24
+text = " MAIN MENU "
+
+[node name="Return" type="Button" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
+theme_override_fonts/font = ExtResource("1_t3u0l")
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
+[connection signal="value_changed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer/SfxVolume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="value_changed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer2/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="pressed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer3/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/HBoxContainer3/Return" to="." method="_on_return_pressed"]

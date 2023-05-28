@@ -15,6 +15,10 @@ var player_2_score: int = 0
 var multi_player: bool = false
 var current_scene: Node = null
 
+#Audio
+var sfx_volume: float = 0  # zero is middle and -100 is muted
+var music_volume: float = 0
+
 
 func _ready() -> void:
 	randomize()
