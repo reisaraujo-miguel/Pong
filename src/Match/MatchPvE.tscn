@@ -134,7 +134,6 @@ visible = false
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-volume_db = -8.0
 
 [connection signal="body_entered" from="Player/Up" to="Ball" method="_on_up_body_entered"]
 [connection signal="body_entered" from="Player/Down" to="Ball" method="_on_down_body_entered"]
