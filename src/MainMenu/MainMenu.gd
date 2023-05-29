@@ -25,9 +25,5 @@ func _on_mode_menu_back_button_pressed() -> void:
 	%StartMenu.visible = true
 
 
-func _on_settings_music_volume_changed() -> void:
-	%AudioStreamPlayer.volume_db = Game.music_volume
-
-
 func _on_audio_stream_player_finished() -> void:
 	%AudioStreamPlayer.play()

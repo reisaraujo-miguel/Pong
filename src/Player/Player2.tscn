@@ -38,6 +38,7 @@ shape = SubResource("RectangleShape2D_dujq5")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_5s8lm")
+bus = &"SFX"
 
 [node name="AudioTrigger" type="Area2D" parent="."]
 collision_mask = 2

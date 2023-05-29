@@ -86,11 +86,11 @@ layout_mode = 1
 unique_name_in_owner = true
 stream = ExtResource("5_ph4nl")
 autoplay = true
+bus = &"MUSIC"
 
 [connection signal="button_up" from="StartMenu/Menu/MarginContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_button_up"]
 [connection signal="pressed" from="StartMenu/Menu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="button_up" from="StartMenu/Menu/MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_button_up"]
-[connection signal="music_volume_changed" from="StartMenu/Settings" to="." method="_on_settings_music_volume_changed"]
 [connection signal="return_pressed" from="StartMenu/Settings" to="." method="_on_settings_return_pressed"]
 [connection signal="back_button_pressed" from="ModeMenu" to="." method="_on_mode_menu_back_button_pressed"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -10,8 +10,6 @@ func _ready() -> void:
 	global_position.y = DisplayServer.screen_get_size().y / 2.0
 	Game.player_2_pos = $Marker2D.global_position
 
-	%AudioStreamPlayer2D.volume_db = Game.sfx_volume
-
 
 func _physics_process(delta: float) -> void:
 	if position.y - 10 > Game.ball_pos:
@@ -30,7 +28,3 @@ func _on_audio_trigger_body_shape_entered(
 	_local_shape_index: int
 ) -> void:
 	%AudioStreamPlayer2D.play()
-
-
-func _on_pause_menu_sfx_volume_changed() -> void:
-	%AudioStreamPlayer2D.volume_db = Game.sfx_volume
