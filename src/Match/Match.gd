@@ -67,5 +67,6 @@ func play_new_song() -> void:
 
 	%Music.play()
 
+
 func _on_music_finished() -> void:
 	play_new_song()

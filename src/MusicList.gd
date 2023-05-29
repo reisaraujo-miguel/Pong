@@ -21,7 +21,11 @@ func _ready() -> void:
 
 	var file = dir.get_next()
 	while file != "":
-		if (not file.begins_with(".")) and (not file.ends_with(".import")):
+		# For some reason, after exporting, godot fails to recognize audio files
+		# when trying to get their names this way. But it does recognize import
+		# files, so this work around is the only way I was able to fix this
+		if file.ends_with(".import"):
+			file = file.replace(".import", "")
 			list.append(load(path + file))
 
 		file = dir.get_next()
