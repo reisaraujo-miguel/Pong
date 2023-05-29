@@ -4,6 +4,8 @@ signal back_button_pressed
 
 
 func _on_single_player_button_up() -> void:
+	Game.multi_player = false
+
 	Game.goto_scene("res://src/Match/MatchPvE.tscn")
 
 
