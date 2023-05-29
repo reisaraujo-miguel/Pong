@@ -48,4 +48,5 @@ func _on_pause_menu_return_pressed() -> void:
 
 func _on_pause_menu_main_menu_pressed() -> void:
 	get_tree().paused = false
+	Game.reset_stats()
 	Game.goto_scene("res://src/MainMenu/MainMenu.tscn")
