@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Funny_Bit.mp3-9fcb819311f92657ef1cc3aee5731b6
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

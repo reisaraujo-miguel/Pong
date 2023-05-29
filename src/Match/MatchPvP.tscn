@@ -161,4 +161,3 @@ bus = &"MUSIC"
 [connection signal="player_2_scored" from="ScoreArea" to="." method="_on_score_area_player_2_scored"]
 [connection signal="main_menu_pressed" from="PauseMenu" to="." method="_on_pause_menu_main_menu_pressed"]
 [connection signal="return_pressed" from="PauseMenu" to="." method="_on_pause_menu_return_pressed"]
-[connection signal="finished" from="Music" to="." method="_on_music_finished"]

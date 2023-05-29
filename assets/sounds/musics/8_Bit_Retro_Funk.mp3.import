@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/8_Bit_Retro_Funk.mp3-64b526243607c19d0d6e2c41
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

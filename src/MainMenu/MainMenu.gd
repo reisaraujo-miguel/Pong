@@ -23,7 +23,3 @@ func _on_settings_return_pressed() -> void:
 func _on_mode_menu_back_button_pressed() -> void:
 	%ModeMenu.visible = false
 	%StartMenu.visible = true
-
-
-func _on_audio_stream_player_finished() -> void:
-	%AudioStreamPlayer.play()
