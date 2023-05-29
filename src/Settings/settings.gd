@@ -12,7 +12,9 @@ func _ready() -> void:
 	%SfxVolume.value = Game.sfx_volume
 	%MusicVolume.value = Game.music_volume
 	AudioServer.set_bus_volume_db(Game.sfx_bus, linear_to_db(%SfxVolume.value))
-	AudioServer.set_bus_volume_db(Game.music_bus, linear_to_db(%MusicVolume.value))
+	AudioServer.set_bus_volume_db(
+		Game.music_bus, linear_to_db(%MusicVolume.value)
+	)
 
 	%MainMenu.visible = enable_main_menu
 
@@ -31,7 +33,9 @@ func _on_sfx_volume_value_changed(value: float) -> void:
 
 
 func _on_music_volume_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(Game.music_bus, linear_to_db(%MusicVolume.value))
+	AudioServer.set_bus_volume_db(
+		Game.music_bus, linear_to_db(%MusicVolume.value)
+	)
 	Game.music_volume = %MusicVolume.value
 
 

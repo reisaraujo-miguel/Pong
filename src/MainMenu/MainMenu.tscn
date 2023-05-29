@@ -57,7 +57,7 @@ theme_override_font_sizes/font_size = 60
 text = "START"
 flat = true
 
-[node name="Settings" type="Button" parent="StartMenu/Menu/MarginContainer/VBoxContainer"]
+[node name="SettingsBtn" type="Button" parent="StartMenu/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_hover_color = Color(0, 0.454902, 0.847059, 1)
@@ -92,7 +92,7 @@ autoplay = true
 bus = &"MUSIC"
 
 [connection signal="button_up" from="StartMenu/Menu/MarginContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_button_up"]
-[connection signal="pressed" from="StartMenu/Menu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="StartMenu/Menu/MarginContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="button_up" from="StartMenu/Menu/MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_button_up"]
 [connection signal="return_pressed" from="StartMenu/Settings" to="." method="_on_settings_return_pressed"]
 [connection signal="back_button_pressed" from="ModeMenu" to="." method="_on_mode_menu_back_button_pressed"]
