@@ -13,8 +13,6 @@ var player_down: StringName = "single_player_down"
 func _ready() -> void:
 	global_position.y = DisplayServer.screen_get_size().y / 2.0
 
-	%AudioStreamPlayer2D.volume_db = Game.sfx_volume
-
 	if is_player1:
 		Game.player_1_pos = $Marker2D.global_position
 	else:
@@ -49,7 +47,3 @@ func _on_audio_trigger_body_shape_entered(
 	_local_shape_index: int
 ) -> void:
 	%AudioStreamPlayer2D.play()
-
-
-func _on_pause_menu_sfx_volume_changed() -> void:
-	%AudioStreamPlayer2D.volume_db = Game.sfx_volume

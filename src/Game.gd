@@ -16,8 +16,11 @@ var multi_player: bool = false
 var current_scene: Node = null
 
 #Audio
-var sfx_volume: float = 0  # zero is middle and -100 is muted
-var music_volume: float = 0
+var sfx_volume: float = 0.5  # zero is middle and -100 is muted
+var music_volume: float = 0.5
+
+@onready var sfx_bus: int = AudioServer.get_bus_index("SFX")
+@onready var music_bus: int = AudioServer.get_bus_index("MUSIC")
 
 
 func _ready() -> void:
