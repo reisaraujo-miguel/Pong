@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/8_Bit_Menu.mp3-17466da9a405dc469267cda5e0c787
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -10,7 +10,10 @@ func _ready() -> void:
 	else:
 		game_scene = "res://src/Match/MatchPvE.tscn"
 
-	play_new_song()
+	%Music.stream = MusicList.list[MusicList.curr_song % MusicList.total_songs]
+	MusicList.curr_song += 1
+
+	%Music.play()
 
 
 func new_service():
@@ -46,14 +49,3 @@ func _on_pause_menu_return_pressed() -> void:
 func _on_pause_menu_main_menu_pressed() -> void:
 	get_tree().paused = false
 	Game.goto_scene("res://src/MainMenu/MainMenu.tscn")
-
-
-func play_new_song() -> void:
-	%Music.stream = MusicList.list[MusicList.curr_song % MusicList.total_songs]
-	MusicList.curr_song += 1
-
-	%Music.play()
-
-
-func _on_music_finished() -> void:
-	play_new_song()

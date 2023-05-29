@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Boss_Time.mp3-186358adcaa4685c42d91c3aa2f7d91
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
