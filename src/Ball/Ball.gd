@@ -42,7 +42,6 @@ func _on_up_body_entered(body: Node2D) -> void:
 			direction = Vector2(-1, 0).rotated(
 				deg_to_rad(angle_list[angle_index])
 			)
-			print("oponent up")
 		else:
 			direction = Vector2(1, 0).rotated(
 				deg_to_rad(angle_list[angle_index + 3])
@@ -54,7 +53,6 @@ func _on_down_body_entered(body: Node2D) -> void:
 		angle_index = randi() % 2
 
 		if Game.oponent_move:
-			print("oponent down")
 			direction = Vector2(-1, 0).rotated(
 				deg_to_rad(angle_list[angle_index + 4])
 			)
